@@ -1,0 +1,21 @@
+  <!--  <input type="text" id="search" name="search"  />
+        @foreach (var book in Model.books)
+        {
+            @using (Html.BeginForm("CartAdd", "Home", FormMethod.Post))
+            {
+                <img />
+                <input type="text" name="title" value="@book.Title" readonly>
+                //<p>@book.Title </p>
+                <p>@book.Price</p>
+                <p>@book.Author.FirstName @book.Author.LastName</p>
+                <p>@book.Publisher.Name</p>
+                <p>@book.AgeRestriction</p>
+                <p>@book.Count</p>
+                <p>@book.Genre.Name</p>
+                <input type="submit" id="buy" name="buy" value="добавить в корзину" />
+                @if (book==Model.book)
+                {
+                    <p>Книга добавлена</p>
+                }
+            }
+    }-->
