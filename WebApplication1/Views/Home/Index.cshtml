@@ -1,39 +1,34 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model WebApplication1.Controllers.HomeController.IndexViewModel
+﻿@model WebApplication1.Controllers.HomeController.IndexViewModel
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <title>Главная</title>
 </head>
 <body>
-    <p>Книжный магазин</p>
-    <label for="search">Поиск</label>
+    <header>
+        <a href="Employee/Index">Панель управления</a>
+    </header>
+    <main>
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <input type="text" name="search"/>
+            <input type="submit"/>
 
-
-    @using (Html.BeginForm("PublisherCreate", "Home", FormMethod.Post))
-    {
-       <input type="text" name="name"> 
-       <input type="submit" value="добавить издательство">
-    }
-
-    @using (Html.BeginForm("PublisherDelete", "Home", FormMethod.Post))
-    {
-        <select name="id">
-            @foreach(var publisher in Model.publishers)
-            {
-                <option value="@publisher.Id">@publisher.Name</option>
-            }
-        </select>
-        <input type="submit" value="добавить издательство">
-    }
-    
-
-                
-    
-
+        }
+        
+        @foreach (var book in Model.books)
+        {
+            <div>
+                <p>@book.Title</p>
+                <p>@book.Author</p>
+                <p>@book.Publisher</p>
+                <p>@book.Count</p>
+                <p>@book.Genre</p>
+                <p>@book.AgeRestriction</p>
+                <p>@book.Price</p>
+            </div>
+          
+        }
+    </main>
 </body>
 </html>

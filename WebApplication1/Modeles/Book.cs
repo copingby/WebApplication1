@@ -1,5 +1,8 @@
-﻿namespace WebApplication1.Modeles
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace WebApplication1.Modeles
 {
+    [Index(nameof(Title), IsUnique =true)]
     public class Book
     {
         public int Id { get; set; }
