@@ -14,13 +14,42 @@
             <input type="text" name="search"/>
             <input type="submit"/>
 
+            @foreach (var author in Model.authors)
+            {
+                <label for="authors">@author</label>
+                <input type="checkbox" name="authors" value="@author.Id">
+            }
+
+            @foreach (var publisher in Model.publishers)
+            {
+                <label for="publishers">@publisher</label>
+                <input type="checkbox" name="publishers" value="@publisher.Id">
+            }
+
+            @foreach (var genre in Model.genres)
+            {
+                <label for="genres">@genre</label>
+                <input type="checkbox" name="genres" value="@genre.Id">
+            }
             
-                @foreach (var author in Model.authors)
-                {
-                    <label for="@author.Id">@author</label>
-                    <input type="checkbox" name="authors[@author.Id]">
-                }
-            
+ /*           @foreach (var author in Model.authors)
+            {
+                <label for="authors[@author.Id]">@author</label>
+                <input type="checkbox" name="authors[@author.Id]">
+            }
+
+            @foreach (var publisher in Model.publishers)
+            {
+                <label for="publishers[@publisher.Id]">@publisher</label>
+                <input type="checkbox" name="publishers[@publisher.Id]">
+            }
+
+            @foreach (var genre in Model.genres)
+            {
+                <label for="genres[@genre.Id]">@genre</label>
+                <input type="checkbox" name="genres[@genre.Id]">
+            }
+ */           
 
         }
         

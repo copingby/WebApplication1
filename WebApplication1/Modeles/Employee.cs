@@ -1,8 +1,7 @@
 ﻿namespace WebApplication1.Modeles
 {
-    public class Employee
+    public class Employee : User
     {
         public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

@@ -9,10 +9,10 @@ namespace WebApplication1
         {
             optionsBuilder.UseSqlite("Data Source=book_store.db");
         }
-
+/*
         public WebApplication1Context() 
         { 
-/*           Database.EnsureDeleted();
+           Database.EnsureDeleted();
             Database.EnsureCreated();
             var genre = new Genre()
             {
@@ -24,12 +24,14 @@ namespace WebApplication1
             };
             var employee = new Employee()
             {
-                Name = "Федор"
+                Name = "Федор", 
+                Password = "p1"
             };
             var customer = new Customer()
             {
                 Name = "Анна",
-                Address = "Зорге"
+                Address = "Зорге", 
+                Password = "p2"
             };
             var author = new Author()
             {
@@ -55,9 +57,9 @@ namespace WebApplication1
             Books.Add(book); 
 
             SaveChanges();
-*/          
+         
         }
-
+*/
         public DbSet<Author> Authors => Set<Author>();
         public DbSet<Genre> Genres => Set<Genre>();
         public DbSet<Publisher> Publishers => Set<Publisher>();
