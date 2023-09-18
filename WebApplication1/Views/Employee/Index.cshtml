@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model WebApplication1.Controllers.EmployeeController.IndexViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <p>Книжный магазин</p>
+    <label for="search">Поиск</label>
+
+
+    @using (Html.BeginForm("PublisherCreate", "Employee", FormMethod.Post))
+    {
+       <input type="text" name="name"> 
+       <input type="submit" value="добавить издательство">
+    }
+
+    @using (Html.BeginForm("PublisherDelete", "Employee", FormMethod.Post))
+    {
+        <select name="Id">
+            @foreach(var publisher in Model.publishers)
+            {
+                <option value="@publisher.Id">@publisher.Name, @publisher.Id</option>
+            }
+        </select>
+        <input type="submit" value="удалить издательство">
+    }
+
+    @using (Html.BeginForm("GenreCreate", "Employee", FormMethod.Post))
+    {
+        <input type="text" name="name">
+        <input type="submit" value="добавить жанр">
+    }
+
+    @using (Html.BeginForm("GenreDelete", "Employee", FormMethod.Post))
+    {
+        <select name="Id">
+            @foreach (var genre in Model.genres)
+            {
+                <option value="@genre.Id">@genre.Name, @genre.Id</option>
+            }
+        </select>
+        <input type="submit" value="удалить жанр">
+    }
+    
+    @using (Html.BeginForm("AuthorCreate", "Employee", FormMethod.Post))
+    {
+        <input type="text" name="FirstName">
+        <input type="text" name="LastName">
+        <input type="date" name="BirthDate">
+        <input type="submit" value="добавить автора">
+    }
+                
+    @using (Html.BeginForm("AuthorDelete", "Employee", FormMethod.Post))
+    {
+        <select name="Id">
+            @foreach (var author in Model.authors)
+            {
+                <option value="@author.Id">@author.FirstName @author.LastName (@author.BirthDate)</option>
+            }
+        </select>
+        <input type="submit" value="удалить автора">
+    }
+
+    @using (Html.BeginForm("BookCreate", "Employee", FormMethod.Post))
+    {
+        <input type="text" name="Title">
+        <input type="number" name="Price">
+        <input type="number" name="Count">
+        <select name="Author">
+            @foreach (var author in Model.authors)
+            {
+                <option value="@author.Id">@author.FirstName @author.LastName (@author.BirthDate)</option>
+            }
+        </select>
+        <select name="Genre">
+            @foreach (var genre in Model.genres)
+            {
+                <option value="@genre.Id">@genre.Name, @genre.Id</option>
+            }
+        </select>
+        <select name="Publisher">
+            @foreach (var publisher in Model.publishers)
+            {
+                <option value="@publisher.Id">@publisher.Name, @publisher.Id</option>
+            }
+        </select>
+        <input type="submit" value="добавить книгу">
+    }
+
+    @using (Html.BeginForm("BookDelete", "Employee", FormMethod.Post))
+    {
+        <select name="Id">
+            @foreach (var book in Model.books)
+            {
+                <option value="@book.Id">@book.Title</option>
+            }
+        </select>
+        <input type="submit" value="удалить книгу">
+    }
+
+</body>
+</html>

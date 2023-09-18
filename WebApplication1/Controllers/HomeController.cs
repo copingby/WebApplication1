@@ -16,15 +16,21 @@ namespace WebApplication1.Controllers
 
         }
 
-        IndexViewModel GetDefaultViewModel(string search)
+        IndexViewModel GetDefaultViewModel(string search, Dictionary<int, string> search_authors)
         {
             List<Book> books;
             List<Publisher> publishers;
             List<Genre> genres;
             List<Author> authors;
+           
             using (WebApplication1Context db = new())
             {
-                books = search != null ? db.Books.Where(b => b.Title.ToLower().Contains(search.ToLower())).ToList() : db.Books.ToList();
+                books = db.Books.Where(
+                    b => {
+                        //string author_state;
+                        return (search != null ? b.Title.ToLower().Contains(search.ToLower()) : true);
+                     //&& true; //search_authors.TryGetValue(b.Author.Id, out author_state) ? author_state.Equals("on") : false;
+                    }).ToList();
                 publishers = db.Publishers.ToList();
                 genres = db.Genres.ToList();
                 authors = db.Authors.ToList();
@@ -38,10 +44,10 @@ namespace WebApplication1.Controllers
                 authors = authors
             };
         }
-        public IActionResult Index(string search)
+        public IActionResult Index(string search, Dictionary<int, string> authors)
         {
             // return RedirectToAction("Index", "Employee");
-            return View(GetDefaultViewModel(search));
+            return View(GetDefaultViewModel(search, authors));
         }
     }
     
